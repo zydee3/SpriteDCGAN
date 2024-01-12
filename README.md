@@ -1,27 +1,29 @@
 # DCGAN
-This is my implementation of a Deep Convolutional Generative 
-Adversarial Network (DCGAN). GANs are inherently unstable due to the 
-adversarial nature of the generator and discriminator, however efforts
-in related research have focused on and improved the balance between the 
-adversarial relationship. My interest with this project is to study 
-these techniques and to experiment with ways of improving this balance. 
+This repository contains my implementation of a Deep Convolutional 
+Generative Adversarial Network (DCGAN), a type of neural network 
+architecture under the Generative Adversarial Networks (GANs) umbrella. 
+GANs are known for their adversarial nature, leading to inherent 
+instability during training. Recent research has made strides in 
+balancing this adversarial relationship, and this project explores 
+those techniques, aiming to enhance stability and performance further.
 
 # Data Set
-The data set for this model is a combination of sprites from various
-online sources such as MapleStory, free game asset forums, and results
-from google images. The data was manually cleaned and fed into the 
-network as a 64x64x4 image. Due to some of the material being 
-copyrighted by certain entities, I cannot provide the data set.
+The dataset comprises sprites sourced from various online platforms, 
+including MapleStory, free game asset forums, and Google Images. 
+Each sprite was manually cleaned and preprocessed to fit the input 
+dimensions of 64x64x4. Due to copyright restrictions, the dataset 
+itself cannot be shared.
 
 # Implementation
-The base for this project was the example implementation of a vanilla 
-DCGAN by PyTorch[1]. 
-In addition, I added a linear layer, cosine annealing, gradient
-clipping, mixed precision training, and a few other things to assist 
-the model to stabalize its losses. Further advancements were fueled by 
-existing papers whose focus was to also improving the quality and 
-stability of DCGANs. [1] was an original idea, however I do not claim
-to be the first to think of it.
+The project builds upon a basic DCGAN framework provided by PyTorch 
+[1].
+
+Additional modifications include the introduction of a linear layer, 
+cosine annealing, gradient clipping, and mixed precision training. 
+Further advances were inspired by existing literature focusing on 
+DCGAN quality and stability improvements. The first point was an 
+original idea, and thus no reference, however I do not claim to be the 
+first to implement it.
 
 1. **Dynamic Adversarial Training Frequency** - The training frequency
    of either adversary is the number of times the adversary is trained
@@ -49,18 +51,28 @@ to be the first to think of it.
    overconfidence and improve generalization. By doing this, the model 
    learns to be less confident about its predictions, which can lead 
    to better generalization 
-4. 
 
 ## Results
+All of the following were taken at 300 epochs. 
+
 After implementing the basic Pytorch DCGAN.<br>
-![](./sample/generate_base_epoch_300.png)<br><br>
+![](./sample/generate_base_epoch_300.png)<br>
+
 After implementing common techniques mentioned.<br>
-![](./sample/generate_common_epoch_300.png.png)
-After implmenting Dynamic Adversarial Training Frequency, Mini Batch 
-Discrimination, One-sided Label Smoothing
+![](./sample/generate_common_epoch_300.png.png)<br>
+
+After implmenting Mini Batch Discrimination, and One-sided Label 
+Smoothing.<br>
+![](./sample/generate_further_epoch_300.png.png)<br>
+
+After implementing Dynamic Adversarial Training Frequency and tuning
+noise size.<br>
+![](./sample/generate_dynamic_epoch_300.png.png)<br>
+
 ## Future Work
 In future work, I wish to experiment with the following promising 
-results in hopes of further improving stability.
+results in hopes of further improving stability. I also plan to find
+optimal hyper parameters.
 
 1. **Feature Matching**
 2. **Self Attention**
